@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('.right').addEventListener('click', function() {
+                    let right = document.querySelector('.right');
+                    right.style.backgroundColor = 'green';
+                    let feedback = document.querySelector('#feedback');
+                    feedback.innerHTML = 'Correct!';
+                    let buttons = document.querySelectorAll('.mcq');
+                    for (let i = 0; i < buttons.length; i++)
+                    {
+                        buttons[i].disabled = true;
+                    }
+                })
+                let wrong = document.querySelectorAll('.wrong');
+                for (let i = 0; i < wrong.length; i++)
+                {
+                    wrong[i].addEventListener('click', function(){
+                        event.target.style.backgroundColor = 'red';
+                        document.querySelector('#feedback').innerHTML = 'Incorrect!';
+                        let buttons = document.querySelectorAll('.mcq');
+                        for (let i = 0; i < buttons.length; i++)
+                        {
+                            buttons[i].disabled = true;
+                        }
+                    })
+                }
+                document.querySelector('button.confirm').addEventListener('click', function() {
+                    let answer = document.querySelector('input.confirm');
+                    if (answer.value == '9')
+                    {
+                        answer.style.color = 'green';
+                        document.querySelector('#feedback1').innerHTML = 'Correct!';
+                    }
+                    else
+                    {
+                        answer.style.color = 'red';
+                        document.querySelector('#feedback1').innerHTML = 'Incorrect!';
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Who won the UEFA Champions League in 2023?</h3>
+                <form>
+                    <button type = "button"; class = "wrong mcq">Bayern Munich</button>
+                    <button type = "button"; class = "right mcq">Manchester City</button>
+                    <button type = "button"; class = "wrong mcq">Real Madrid</button>
+                </form>
+                <p id = "feedback"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>How many Premiere League Titles does Manchester City have?</h3>
+                <input placeholder = "Answer"; class = "confirm"; type = "text"></input>
+                <button type = "button" class = "confirm">Confirm</button>
+                <p id = "feedback1"></p>
+            </div>
+        </div>
+    </body>
+</html>

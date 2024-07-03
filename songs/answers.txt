@@ -1,0 +1,2 @@
+Spotify might take the averages of danceability, valence, energy, to calculate the listeners Aura. This may not be representative of the listener however since
+the user may listen to certain songs much more frequently than the rest so maybe taking a weighted average so that the more frequent songs have more weightage may better represent the users listening habits.

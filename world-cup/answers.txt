@@ -1,0 +1,16 @@
+Times:
+
+10 simulations: 0m0.027s
+100 simulations: 0m0.029s
+1000 simulations: 0m0.037s
+10000 simulations: 0m0.135s
+100000 simulations: 0m1.162s
+1000000 simulations: 0m11.504s
+
+Questions:
+
+Which predictions, if any, proved incorrect as you increased the number of simulations?: I had initally thought Spain and england would have a much higher chance of winning. Argentina as well since they were runners up in the previous world cup. I think this is
+due to the nature of the fifa rating, which takes into accountall matches played between world cups aswell, so argentina, who lost most of their matches in regional and continental tournaments, had a lower rating and therefore lower chance of winning. This also applies to england and spain who lost in the round of 16 in the euros 2016 and didn't even make it to the quarter finals
+
+Suppose you're charged a fee for each second of compute time your program uses.
+After how many simulations would you call the predictions "good enough"?: I would say a 1000 simulations because after that the time starts increasing by a much steeper gradient against the number of simulations.
