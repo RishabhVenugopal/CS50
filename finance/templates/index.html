@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Number of Shares</th>
+                <th>Share Price</th>
+                <th>Total Holding</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                {% if row["SUM(shares)"] != 0 %}
+                    <tr>
+                        <td>{{ row.symbol }}</td>
+                        <td>{{ row["SUM(shares)"] }}</td>
+                        <td>{{ usd(row.price) }}</td>
+                        <td>{{ usd(row["SUM(shares)"] * row.price) }}</td>
+                        <form action="/buy" method="get">
+                            <td><button type="submit" class="btn btn-primary" name="buy" value={{ row.symbol }}>Buy</button></td>
+                        </form>
+                        <form action="/sell" method="get">
+                            <td><button type="submit" class="btn btn-primary" name="sell" value={{ row.symbol }}>Sell</button></td>
+                        </form>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3 style = "font-size: 22px">Current Balance: {{ usd(balance) }}</h3>
+    <h3 style="font-size: 22px">Grand Total: {{ usd(balance + sum) }}</h3>
+{% endblock %}

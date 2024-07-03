@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h2 class="mb-4">
+        Buy
+    </h2>
+    <form action="/buy" method="post">
+        <div class="mb-3">
+        {% if index %}
+            <input class="form-control mx-auto w-auto" placeholder="Symbol" type="text" name="symbol" value={{ symbol }}>
+        {% else %}
+            <input class="form-control mx-auto w-auto" placeholder="Symbol" type="text" name="symbol" autofocus>
+        {% endif %}
+        </div>
+        <div class="mb-3">
+        {% if index %}
+            <input class="form-control mx-auto w-auto" placeholder="No. of shares" name="shares" autofocus>
+        {% else %}
+            <input class="form-control mx-auto w-auto" placeholder="No. of shares" name="shares">
+        {% endif %}
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+{% endblock %}

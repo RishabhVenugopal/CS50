@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <h2 class="mb-4">
+        Sell
+    </h2>
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select class="form-select" style="width: 16%; margin: auto" name="symbol">
+                {% if not index %}
+                    <option disabled selected>Owned Stocks</option>
+                {% else %}
+                    <option selected value={{ symbol }}>{{ symbol }}</option>
+                {% endif %}
+                {% for row in rows %}
+                    {% if row["SUM(shares)"] != 0 %}
+                        <option value={{ row.symbol }}>{{ row.symbol }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+        {% if index %}
+            <input class="form-control mx-auto w-auto" placeholder="No. of shares" name="shares" autofocus>
+        {% else %}
+            <input class="form-control mx-auto w-auto" placeholder="No. of shares" name="shares">
+        {% endif %}
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
